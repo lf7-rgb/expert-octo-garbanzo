@@ -3,6 +3,7 @@ import SearchBar from './components/SearchBar';
 import SearchHistory from './components/SearchHistory';
 import CurrentWeather from './components/CurrentWeather';
 import Forecast from './components/Forecast';
+import WeatherMap from './components/WeatherMap';
 import { useSearchHistory } from './hooks/useSearchHistory';
 import {
   fetchCurrentByCity,
@@ -96,6 +97,10 @@ export default function App() {
           <>
             <CurrentWeather data={currentWeather} />
             <Forecast data={forecast} />
+            <WeatherMap
+              coords={currentWeather.coord}
+              cityName={currentWeather.name}
+            />
           </>
         )}
       </main>

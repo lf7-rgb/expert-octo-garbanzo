@@ -15,7 +15,7 @@ body {
 
 /* ── Layout ───────────────────────────────────────────────── */
 .app {
-  max-width: 700px;
+  max-width: 860px;
   margin: 0 auto;
   padding: 2rem 1rem 4rem;
 }
@@ -276,6 +276,165 @@ body {
 @keyframes wi-mist {
   from { transform: translateX(-5px); }
   to   { transform: translateX(5px);  }
+}
+
+/* ── Weather Map ──────────────────────────────────────────── */
+
+/* Override Leaflet's default font so it inherits ours */
+.leaflet-container {
+  font-family: inherit;
+}
+
+/* Leaflet attribution pill — keep it readable on dark bg */
+.leaflet-control-attribution {
+  background: rgba(0, 0, 0, 0.55) !important;
+  color: rgba(255, 255, 255, 0.6) !important;
+  font-size: 0.65rem !important;
+}
+.leaflet-control-attribution a { color: rgba(255, 255, 255, 0.7) !important; }
+
+.weather-map__header {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  margin-bottom: 0.75rem;
+}
+.weather-map__header h3 {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: rgba(255, 255, 255, 0.45);
+  margin: 0;
+}
+.weather-map__city {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+/* Layer toggle buttons */
+.weather-map__controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 0.75rem;
+}
+
+.map-btn {
+  padding: 0.3rem 0.75rem;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.07);
+  color: #e0e0e0;
+  font-size: 0.8rem;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+  white-space: nowrap;
+}
+.map-btn:hover { background: rgba(255, 255, 255, 0.14); }
+.map-btn.active {
+  background: rgba(79, 195, 247, 0.2);
+  border-color: #4fc3f7;
+  color: #4fc3f7;
+}
+.map-btn--aqi.active {
+  background: rgba(34, 197, 94, 0.15);
+  border-color: #22c55e;
+  color: #22c55e;
+}
+
+.weather-map__container {
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+/* ── AQI Panel ────────────────────────────────────────────── */
+.aqi-panel {
+  margin-top: 1rem;
+  padding: 1rem 1.25rem;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.04);
+  border-left-width: 4px;
+}
+
+.aqi-loading, .aqi-error {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.55);
+}
+.aqi-error { color: #ff8a80; }
+
+.aqi-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0.9rem;
+}
+
+.aqi-badge {
+  display: inline-block;
+  padding: 0.15rem 0.55rem;
+  border-radius: 12px;
+  color: #0f172a;
+  font-weight: 700;
+  font-size: 0.8rem;
+  margin-right: 0.5rem;
+}
+
+.aqi-label {
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.aqi-subtitle {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.45);
+}
+
+/* 6-column pollutant grid */
+.aqi-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.6rem 1rem;
+  margin-bottom: 1rem;
+}
+
+.aqi-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+.aqi-item-label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: rgba(255, 255, 255, 0.4);
+}
+.aqi-item-value {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #e0e0e0;
+}
+.aqi-item-unit { font-weight: 400; font-size: 0.75rem; color: rgba(255,255,255,0.4); }
+
+/* Color-scale legend */
+.aqi-legend {
+  display: flex;
+  gap: 3px;
+  height: 6px;
+  border-radius: 3px;
+  overflow: hidden;
+}
+.aqi-legend-item {
+  flex: 1;
+  border-radius: 2px;
+  opacity: 0.5;
+  transition: opacity 0.2s, transform 0.2s;
+}
+.aqi-legend-item.current {
+  opacity: 1;
+  transform: scaleY(1.8);
 }
 
 /* ── Responsive ───────────────────────────────────────────── */
