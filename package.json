@@ -2,6 +2,7 @@
   "name": "weather-app",
   "version": "1.0.0",
   "private": true,
+  "main": "server/index.js",
   "scripts": {
     "install:all": "npm install --prefix server && npm install --prefix client",
     "build": "npm install --prefix server && npm install --prefix client && npm run build --prefix client",
