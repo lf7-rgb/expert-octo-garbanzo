@@ -245,6 +245,39 @@ body {
   font-size: 0.95rem;
 }
 
+/* ── Weather Icon Animations ──────────────────────────────── */
+@keyframes wi-spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes wi-twinkle {
+  0%, 100% { opacity: 1;   transform: scale(1);   }
+  50%       { opacity: 0.2; transform: scale(0.6); }
+}
+
+@keyframes wi-rain {
+  0%   { transform: translateY(0);    opacity: 1; }
+  80%  { opacity: 1; }
+  100% { transform: translateY(14px); opacity: 0; }
+}
+
+@keyframes wi-snow {
+  0%   { transform: translateY(0)    rotate(0deg);  opacity: 1; }
+  100% { transform: translateY(16px) rotate(25deg); opacity: 0; }
+}
+
+@keyframes wi-lightning {
+  0%, 88%, 100% { opacity: 1;   }
+  92%           { opacity: 0.1; }
+  96%           { opacity: 1;   }
+  98%           { opacity: 0.1; }
+}
+
+@keyframes wi-mist {
+  from { transform: translateX(-5px); }
+  to   { transform: translateX(5px);  }
+}
+
 /* ── Responsive ───────────────────────────────────────────── */
 @media (max-width: 480px) {
   .app__header h1 { font-size: 1.5rem; }

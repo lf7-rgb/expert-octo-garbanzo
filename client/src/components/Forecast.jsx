@@ -1,3 +1,5 @@
+import WeatherIcon from './WeatherIcon';
+
 const DAYS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
 /**
@@ -34,12 +36,10 @@ export default function Forecast({ data }) {
             main: { temp_min, temp_max },
             weather: [{ description, icon }],
           } = item;
-          const iconUrl = `https://openweathermap.org/img/wn/${icon}@2x.png`;
-
           return (
             <div key={item.dt} className="forecast__card card">
               <p className="forecast__day">{dayName}</p>
-              <img src={iconUrl} alt={description} width={50} height={50} />
+              <WeatherIcon icon={icon} size={50} />
               <p className="forecast__desc">{description}</p>
               <p className="forecast__temps">
                 <span>{Math.round(temp_max)}°</span>{' '}

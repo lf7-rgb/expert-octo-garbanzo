@@ -1,3 +1,5 @@
+import WeatherIcon from './WeatherIcon';
+
 export default function CurrentWeather({ data }) {
   if (!data) return null;
 
@@ -9,15 +11,13 @@ export default function CurrentWeather({ data }) {
     weather: [{ description, icon }],
   } = data;
 
-  const iconUrl = `https://openweathermap.org/img/wn/${icon}@2x.png`;
-
   return (
     <div className="current-weather card">
       <div className="current-weather__header">
         <h2>
           {name}, {country}
         </h2>
-        <img src={iconUrl} alt={description} width={80} height={80} />
+        <WeatherIcon icon={icon} size={80} />
       </div>
       <p className="current-weather__temp">{Math.round(temp)}°F</p>
       <p className="current-weather__desc">{description}</p>
