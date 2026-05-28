@@ -16,6 +16,11 @@ if (isDev) {
 app.use(express.json());
 app.use('/api/weather', weatherRouter);
 
+// Health check — confirms the server is up and the API key env var is present
+app.get('/api/health', (_req, res) => {
+  res.json({ ok: true, apiKeySet: !!process.env.OPENWEATHER_API_KEY });
+});
+
 // In production, serve the Vite build and handle client-side routing
 if (!isDev) {
   const clientDist = path.join(__dirname, '../client/dist');
